@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Spice Theory — Restaurant</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    
+    :root {
+      --accent: #b33a30;
+      --dark: #2b2b2b;
+      --muted: #666;
+      --card-bg: #fff;
+      --page-bg: #faf7f5;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--dark);
+      line-height: 1.45;
+    }
+
+    header {
+      background: linear-gradient(90deg, #b33a30, #8b2b22);
+      color: white;
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    header h1 { margin: 0; font-size: 2rem; letter-spacing: 0.6px; }
+    header p { margin: 8px 0 0; opacity: 0.95; }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 8px 16px;
+      text-align: center;
+    }
+    nav a {
+      color: var(--dark);
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    main { max-width: 1100px; margin: 18px auto; padding: 0 16px 36px; }
+
+    section { margin: 18px 0; }
+
+    h2 { color: var(--accent); margin-bottom: 10px; }
+
+    
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+      align-items: center;
+    }
+    .hero-card {
+      background: var(--card-bg);
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+    }
+    .hero-card p { margin: 8px 0; color: var(--muted); }
+
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .menu-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    
+    .menu-item img {
+      width: 100%;
+      height: 160px;        
+      object-fit: cover;    
+      border-radius: 8px;
+      display: block;
+    }
+
+    .menu-item h3 { margin: 0; font-size: 1.05rem; }
+    .menu-item p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .menu-item .meta { margin-top: auto; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .price { font-weight:700; color: #0b6b5b; }
+
+    
+    .card {
+      background: var(--card-bg);
+      padding: 14px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    }
+
+    .form-row { margin-bottom: 10px; }
+    label { display:block; font-size: 0.9rem; margin-bottom:6px; color: #333; }
+    input[type="text"], input[type="email"], input[type="date"], input[type="time"], select, input[type="number"] {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+
+    button.btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    button.btn:hover { opacity: 0.95; }
+
+    .muted { color: var(--muted); font-size: 0.9rem; }
+
+    
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .review {
+      background: var(--card-bg);
+      padding: 10px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(15,23,42,0.03);
+    }
+    .stars { color: #f1c40f; font-weight:700; }
+
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 18px 0;
+      margin-top: 22px;
+      border-top: 1px solid #eee;
+    }
+
+    
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { order: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Spice Theory</h1>
+  <p>Seasonal plates • Warm vibes • Local produce</p>
+</header>
+
+<nav>
+  <a href="#menu">Menu</a>
+  <a href="#reserve">Reserve</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#gallery">Gallery</a>
+</nav>
+
+<main>
+
+  
+  <section class="hero">
+    <div class="hero-card">
+      <h2>Welcome to Spice Theory</h2>
+      <p>Spice Theory is a cozy neighbourhood restaurant serving modern comfort food with seasonal ingredients. Enjoy relaxed dining and friendly service.</p>
+      <p class="muted">Open daily • 11:00 AM – 11:00 PM • Walk-ins welcome</p>
+      
+      <h3 style="margin-top:12px;">Chef's Special</h3>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <div style="flex:1">
+          <img src="special.jpg" alt="Chef special" style="width:100%; height:275px; object-fit:cover; border-radius:8px;">
+        </div>
+        <div style="flex:2">
+          <strong>Paneer-Do-Pyaza with Garlic Naan</strong>
+          <p class="muted" style="margin:6px 0 0;">Rich, semi-spicy paneer cooked with double onions, served with hot butter garlic naan and a green chutney.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <h3>Quick reservation</h3>
+      <form id="reservationForm">
+        <div class="form-row">
+          <label for="rname">Full name</label>
+          <input id="rname" type="text" placeholder="Your name" required>
+        </div>
+
+        <div class="form-row">
+          <label for="remail">Email</label>
+          <input id="remail" type="email" placeholder="you@gmail.com.com" required>
+        </div>
+
+        <div class="form-row" style="display:flex; gap:8px;">
+          <div style="flex:1">
+            <label for="rdate">Date</label>
+            <input id="rdate" type="date" required>
+          </div>
+          <div style="flex:1">
+            <label for="rtime">Time</label>
+            <input id="rtime" type="time" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="rpeople">People</label>
+          <input id="rpeople" type="number" min="1" value="2" required>
+        </div>
+
+        <button class="btn" type="submit">Request reservation</button>
+        <p id="reserveMsg" class="muted" style="margin-top:10px;"></p>
+      </form>
+    </aside>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <p class="muted"></p>
+
+    <div class="menu-grid">
+
+      <!--  menu item -->
+      <article class="menu-item" tabindex="0">
+        <img src="menu1.jpg" alt="Margherita Pizza">
+        <h3>Margherita Pizza</h3>
+        <p class="muted">San Marzano tomato • Fresh mozzarella • Basil</p>
+        <div class="meta">
+          <div class="price">₹499</div>
+          <button class="btn" onclick="alert('Added Margherita Pizza to order')">Order</button>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0">
+        <img src="menu2.jpg" alt="Paneer Tikka">
+        <h3>Paneer Tikka</h3>
+        <p class="muted">Charred paneer • Tangy masala • Mint chutney</p>
+        <div class="meta">
+          <div class="price">₹349</div>
+          <button class="btn" onclick="alert('Added Paneer Tikka to order')">Order</button>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0">
+        <img src="menu3.jpg" alt="Dal Tadka">
+        <h3>Dal Tadka</h3>
+        <p class="muted">Yellow dal tempered with garlic & ghee</p>
+        <div class="meta">
+          <div class="price">₹249</div>
+          <button class="btn" onclick="alert('Added Dal Tadka to order')">Order</button>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0">
+        <img src="menu4.jpg" alt="Samosa">
+        <h3>Samosa</h3>
+        <p class="muted">Crispy pastry stuffed with spiced potatoes</p>
+        <div class="meta">
+          <div class="price">₹99</div>
+          <button class="btn" onclick="alert('Added Samosa to order')">Order</button>
+        </div>
+      </article>
+
+    
+      <article class="menu-item" tabindex="0">
+        <img src="menu5.jpg" alt="Pasta Alfredo">
+        <h3>Pasta Alfredo</h3>
+        <p class="muted">Creamy parmesan sauce • Garlic • Parsley</p>
+        <div class="meta">
+          <div class="price">₹399</div>
+          <button class="btn" onclick="alert('Added Pasta Alfredo to order ')">Order</button>
+        </div>
+      </article>
+
+      <article class="menu-item" tabindex="0">
+        <img src="menu6.jpg" alt="Jalebi">
+        <h3>Jalebi</h3>
+        <p class="muted">Crispy syrup-soaked spirals</p>
+        <div class="meta">
+          <div class="price">₹149</div>
+          <button class="btn" onclick="alert('Added Jalebi to order')">Order</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <h2>Customer Reviews</h2>
+    <p class="muted">See what people say — and add your own review below.</p>
+
+    <div class="reviews-list card" id="reviewsList">
+      <!-- initial example reviews -->
+      <div class="review">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong>Ashna</strong>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="muted" style="margin-top:6px;">Lovely flavours and warm service — loved the paneer tikka!</p>
+      </div>
+
+      <div class="review">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong>Rahul</strong>
+          <div class="stars">★★★★☆</div>
+        </div>
+        <p class="muted" style="margin-top:6px;">Great ambience. Will come back for desserts.</p>
+      </div>
+    </div>
+
+    <!-- Submit review form -->
+    <div class="card" style="margin-top:12px;">
+      <h3>Leave a review</h3>
+      <form id="reviewForm">
+        <div class="form-row">
+          <label for="rname2">Your name</label>
+          <input id="rname2" type="text" placeholder="Name" required>
+        </div>
+
+        <div class="form-row">
+          <label for="rrating">Rating</label>
+          <select id="rrating">
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★☆ (4)</option>
+            <option value="3">★★★☆☆ (3)</option>
+            <option value="2">★★☆☆☆ (2)</option>
+            <option value="1">★☆☆☆☆ (1)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="rtext">Your review</label>
+          <input id="rtext" type="text" placeholder="What did you like?" required>
+        </div>
+
+        <button class="btn" type="submit">Submit review</button>
+        <p id="reviewMsg" class="muted" style="margin-top:8px;"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p class="muted"></p>
+
+    <div class="gallery">
+      <img src="gallery1.jpg" alt="Dining 1">
+      <img src="gallery2.jpg" alt="Dining 2">
+      <img src="gallery3.jpg" alt="Dish 1">
+      <img src="gallery4.jpg" alt="Dish 2">
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Spice Theory • Thornhill Road • Allahabad • Phone: +91-933424532
+</footer>
+
+<script>
+  // Simple reservation handling 
+  document.getElementById('reservationForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('rname').value.trim();
+    const email = document.getElementById('remail').value.trim();
+    const date = document.getElementById('rdate').value;
+    const time = document.getElementById('rtime').value;
+    const people = document.getElementById('rpeople').value;
+
+    // basic validation
+    if(!name || !email || !date || !time || !people) {
+      document.getElementById('reserveMsg').textContent = 'Please fill all fields.';
+      return;
+    }
+
+    // show confirmation message
+    document.getElementById('reserveMsg').textContent =
+      `Thanks ${name}! Your reservation request for ${people} on ${date} at ${time} has been received. We'll email you at ${email}. (Demo)`;
+
+    // clear form after a short delay
+    setTimeout(()=> document.getElementById('reservationForm').reset(), 400);
+  });
+
+  // Reviews: append review to list (client-side only)
+  document.getElementById('reviewForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('rname2').value.trim();
+    const rating = document.getElementById('rrating').value;
+    const text = document.getElementById('rtext').value.trim();
+
+    if(!name || !text) {
+      document.getElementById('reviewMsg').textContent = 'Please enter name and review.';
+      return;
+    }
+
+    const stars = '★★★★★☆☆☆☆☆'.slice(5 - rating, 10 - rating).replace(/☆/g,'☆').slice(0,5).replace(/★/g,'★'); // fallback
+    const starSymbols = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = 'review';
+    reviewDiv.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <strong>${escapeHtml(name)}</strong>
+        <div class="stars">${starSymbols}</div>
+      </div>
+      <p class="muted" style="margin-top:6px;">${escapeHtml(text)}</p>
+    `;
+
+    document.getElementById('reviewsList').appendChild(reviewDiv);
+    document.getElementById('reviewMsg').textContent = 'Thanks for your review!';
+
+    // reset form
+    setTimeout(()=>{
+      document.getElementById('reviewForm').reset();
+      document.getElementById('reviewMsg').textContent = '';
+    }, 900);
+  });
+
+  // small helper to prevent basic html injection
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); });
+  }
+</script>
+</body>
+</html>
